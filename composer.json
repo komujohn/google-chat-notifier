@@ -1,18 +1,14 @@
 {
-    "name": "symfony/google-chat-notifier",
+    "name": "komujohn/google-chat-notifier",
     "type": "symfony-bridge",
     "description": "Symfony Google Chat Notifier Bridge",
     "keywords": ["google", "chat", "google chat", "notifier"],
-    "homepage": "https://symfony.com",
+    "homepage": "#",
     "license": "MIT",
     "authors": [
         {
-            "name": "Fabien Potencier",
-            "email": "fabien@symfony.com"
-        },
-        {
-            "name": "Symfony Community",
-            "homepage": "https://symfony.com/contributors"
+            "name": "John Komu",
+            "email": "komu.john@gmail.com"
         }
     ],
     "require": {
