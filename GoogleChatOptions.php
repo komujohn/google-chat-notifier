@@ -21,17 +21,20 @@ use Symfony\Component\Notifier\Notification\Notification;
  */
 final class GoogleChatOptions implements MessageOptionsInterface
 {
-    private $threadKey;
-    private $options = [];
+    private ?string $threadKey='';
+    private array $options = [];
 
     public function __construct(array $options = [])
     {
         $this->options = $options;
     }
 
-    public static function fromNotification(Notification $notification): self
+    public static function fromNotification(ThreadNotification $notification): self
     {
         $options = new self();
+        if($notification->getThread()){
+            $options->text($notification->getThread());
+        }
 
         $text = $notification->getEmoji().' *'.$notification->getSubject().'* ';
 

@@ -20,6 +20,11 @@ use Symfony\Component\Notifier\Message\MessageInterface;
 use Symfony\Component\Notifier\Message\SentMessage;
 use Symfony\Component\Notifier\Transport\AbstractTransport;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
@@ -69,6 +74,13 @@ final class GoogleChatTransport extends AbstractTransport
 
     /**
      * @see https://developers.google.com/hangouts/chat/how-tos/webhooks
+     * @param MessageInterface $message
+     * @return SentMessage
+     * @throws ClientExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
      */
     protected function doSend(MessageInterface $message): SentMessage
     {
@@ -94,6 +106,7 @@ final class GoogleChatTransport extends AbstractTransport
         }
 
         $threadKey = $opts->getThreadKey() ?: $this->threadKey;
+        $threadKey= $notification->getThread();
 
         $options = $opts->toArray();
         $url = sprintf('https://%s/v1/spaces/%s/messages?key=%s&token=%s%s',

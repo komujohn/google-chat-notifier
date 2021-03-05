@@ -3,7 +3,7 @@
     "type": "symfony-bridge",
     "description": "Symfony Google Chat Notifier Bridge",
     "keywords": ["google", "chat", "google chat", "notifier"],
-    "homepage": "#",
+    "homepage": "https://code.ke",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +14,7 @@
     "require": {
         "php": ">=7.2.5",
         "symfony/http-client": "^4.3|^5.0",
-        "symfony/notifier": "^5.3"
+        "symfony/notifier": "~5.2"
     },
     "autoload": {
         "psr-4": { "Symfony\\Component\\Notifier\\Bridge\\GoogleChat\\": "" },
